@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sharing_id: 1
+  folder: MyString
+  file: MyString
+  downloads_count: 1
+
+two:
+  sharing_id: 1
+  folder: MyString
+  file: MyString
+  downloads_count: 1

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sharing_id: 1
+  friend_id: 1
+  downloaded: false
+
+two:
+  sharing_id: 1
+  friend_id: 1
+  downloaded: false

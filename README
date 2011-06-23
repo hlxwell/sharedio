@@ -1,0 +1,7 @@
+== Shared IO Posting file process ==
+
+POST [User List] and [Invitation Text] to server to get the [sharing_id]
+POST all files to /sharings/:id/files
+POST /sharings/:id/finish to endup uploading file for a sharing.
+
+Server will send mail to the non-site-users, for the site-users, will send a online message to all client sides.
