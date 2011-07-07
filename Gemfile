@@ -10,9 +10,15 @@ gem 'jquery-rails'
 gem 'unicorn'
 gem 'devise'
 gem 'carrierwave'
-gem 'annotate-models'
 
 group "development" do
   gem 'capistrano'
   gem 'ruby-debug'
+end
+
+group "test" do
+  gem 'mocha', :require => nil
+  gem 'factory_girl'
+  gem "factory_girl_rails"
+  gem "shoulda"
 end

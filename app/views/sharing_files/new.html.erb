@@ -1,0 +1,5 @@
+<%= form_for @sharing_file, :url => sharing_sharing_files_path(params[:sharing_id]) do |f| %>
+  <%= f.file_field :file %>
+  <%= f.text_field :folder %>
+  <%= f.submit %>
+<% end %>

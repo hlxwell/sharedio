@@ -2,7 +2,7 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: shared_id_development
+  database: shared_io_development
   pool: 5
   username: root
   password:
@@ -12,7 +12,7 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: shared_id_test
+  database: shared_io_test
   pool: 5
   username: root
   password:
@@ -22,7 +22,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: shared_id_development
+  database: shared_io_development
   pool: 5
   username: root
   password:

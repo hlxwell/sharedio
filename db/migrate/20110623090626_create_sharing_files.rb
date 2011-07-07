@@ -4,7 +4,7 @@ class CreateSharingFiles < ActiveRecord::Migration
       t.integer :sharing_id
       t.string :folder
       t.string :file
-      t.integer :downloads_count
+      t.integer :downloads_count, :default => 0
 
       t.timestamps
     end

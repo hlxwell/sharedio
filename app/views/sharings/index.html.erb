@@ -1,0 +1,5 @@
+<h1>Sharings#index</h1>
+
+<% @sharings.each do |sharing| %>
+  <p><%= link_to sharing.invitation_text, sharing_sharing_files_path(sharing) %></p>
+<% end %>

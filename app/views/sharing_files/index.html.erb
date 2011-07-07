@@ -1,0 +1,12 @@
+<h1>SharingFiles of "<%= @sharing.invitation_text %>"</h1>
+<%= link_to "new", new_sharing_sharing_file_path(params[:sharing_id]) %>
+
+<p>
+  <% @sharing_files.each do |sharing_file| %>
+    <p>
+      <%= sharing_file.file_url %>
+      <br>
+      <%= sharing_file.folder %>
+    </p>
+  <% end %>
+</p>

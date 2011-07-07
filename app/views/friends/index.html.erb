@@ -1,0 +1,11 @@
+<h1>Friends#index</h1>
+<%= link_to "new", new_friend_path %>
+
+<p>
+  <% @friends.each do |friend| %>
+    <%= friend.name %>
+    <%= friend.email %>
+    <%= friend.registered_user %>
+    <%= friend.group.try(:name) %>
+  <% end %>
+</p>

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110623091437) do
     t.integer  "group_id"
     t.string   "name"
     t.string   "email"
-    t.boolean  "registered_user"
+    t.boolean  "registered_user", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110623091437) do
     t.integer  "sharing_id"
     t.string   "folder"
     t.string   "file"
-    t.integer  "downloads_count"
+    t.integer  "downloads_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20110623091437) do
   create_table "sharing_users", :force => true do |t|
     t.integer  "sharing_id"
     t.integer  "friend_id"
-    t.boolean  "downloaded"
+    t.boolean  "downloaded", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
