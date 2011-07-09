@@ -1,12 +1,13 @@
-set :application, "shared_io"
+set :application, "sharedio"
 set :repository,  "git@github.com:hlxwell/sharedio.git"
-
+set :deploy_to, "/home/sharedio/app"
 set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :user, "sharedio"
+set :use_sudo, false
 
-role :web, "http://shared.io"                          # Your HTTP server, Apache/etc
-role :app, "http://shared.io"                          # This may be the same as your `Web` server
-role :db,  "http://shared.io", :primary => true        # This is where Rails migrations will run
+role :web, "itjob.fm"                          # Your HTTP server, Apache/etc
+role :app, "itjob.fm"                          # This may be the same as your `Web` server
+role :db,  "itjob.fm", :primary => true        # This is where Rails migrations will run
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
