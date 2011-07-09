@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110623091437) do
+ActiveRecord::Schema.define(:version => 20110709070434) do
 
   create_table "friends", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.string   "name"
     t.string   "email"
-    t.boolean  "registered_user", :default => false
+    t.boolean  "trust"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20110623091437) do
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "viewed",     :default => false
+    t.integer  "sharing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

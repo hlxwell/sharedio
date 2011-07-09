@@ -7,7 +7,7 @@ gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
-gem 'unicorn'
+gem 'unicorn', '4.0.1'
 gem 'devise'
 gem 'carrierwave'
 
