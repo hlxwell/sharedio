@@ -10,11 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709070434) do
+ActiveRecord::Schema.define(:version => 20110709094904) do
+
+  create_table "friend_groups", :force => true do |t|
+    t.integer  "friend_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friends", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "group_id"
     t.string   "name"
     t.string   "email"
     t.boolean  "trust"

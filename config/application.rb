@@ -45,5 +45,12 @@ module SharedIo
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :erb
+      g.test_framework  :shoulda
+      g.fixture_framework :factory_girl
+    end
   end
 end

@@ -4,8 +4,6 @@ require 'rails/test_help'
 require 'pp'
 
 class ActiveSupport::TestCase
-  include Devise::TestHelpers
-
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
@@ -14,3 +12,5 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+ActionController::TestCase.send :include, Devise::TestHelpers

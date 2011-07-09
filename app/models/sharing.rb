@@ -6,5 +6,5 @@ class Sharing < ActiveRecord::Base
   accepts_nested_attributes_for :sharing_files
   accepts_nested_attributes_for :sharing_users
   
-  validates_presence_of :invitation_text
+  validates_presence_of :user_id, :invitation_text
 end
