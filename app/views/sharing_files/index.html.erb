@@ -4,9 +4,8 @@
 <p>
   <% @sharing_files.each do |sharing_file| %>
     <p>
-      <%= sharing_file.file_url %>
-      <br>
-      <%= sharing_file.folder %>
+      <%= sharing_file.file_url %> - <%= sharing_file.folder %>
     </p>
+    <br>
   <% end %>
 </p>

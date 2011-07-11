@@ -1,6 +1,6 @@
 class SharingFile < ActiveRecord::Base
-  belongs_to :sharing
+  belongs_to :sharing, :counter_cache => :uploaded_file_count
   mount_uploader :file, SharingFileUploader
 
-  validates_presence_of :sharing_id, :folder, :file
+  validates_presence_of :folder, :file
 end

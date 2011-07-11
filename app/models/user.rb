@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   has_many :sharings
   has_many :friends
   has_many :groups
+  has_many :notifications
 end

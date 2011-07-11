@@ -1,4 +1,10 @@
 <%= form_for @sharing do |f| %>
-  <%= f.text_area :invitation_text %>
-  <%= f.submit "ok" %>
+  <p>invitation text: <%= f.text_area :invitation_text %></p>
+  <p>friend:
+  <%= f.fields_for :sharing_users do |user_form| %>
+    <%= user_form.select :friend_id, options_from_collection_for_select(current_user.friends, :id, :email) %>
+  <% end %>
+  </p>
+
+  <%= f.submit "submit" %>
 <% end %>

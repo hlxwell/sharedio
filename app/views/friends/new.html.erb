@@ -1,7 +1,6 @@
 <%= form_for @friend, :url => friends_path do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :email %>
-  <%= f.check_box :registered_user %>
-  <%= f.select :group_id, options_from_collection_for_select(current_user.groups, :id, :name) %>
+  <%= f.check_box :trust %>
   <%= f.submit %>
 <% end %>

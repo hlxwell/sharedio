@@ -1,5 +1,11 @@
 <h1>Sharings#index</h1>
 
 <% @sharings.each do |sharing| %>
-  <p><%= link_to sharing.invitation_text, sharing_sharing_files_path(sharing) %></p>
+  <p>
+    <%= link_to sharing.invitation_text, sharing_sharing_files_path(sharing) %>
+    <div>
+      total files: <%= sharing.total_file_count %>,
+      uploaded files: <%= sharing.uploaded_file_count %>
+    </div>
+  </p>
 <% end %>

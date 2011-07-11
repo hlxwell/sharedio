@@ -1,8 +1,9 @@
 class NotificationsController < ApplicationController
-  # GET /notifications
-  # GET /notifications.json
+  before_filter :authenticate_user!
+  before_filter :get_object, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @notifications = Notification.all
+    @notifications = current_user.notifications
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +11,8 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # GET /notifications/1
-  # GET /notifications/1.json
   def show
-    @notification = Notification.find(params[:id])
+    @notification.view!
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +20,8 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # GET /notifications/new
-  # GET /notifications/new.json
   def new
-    @notification = Notification.new
+    @notification = current_user.notifications.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,15 +29,11 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # GET /notifications/1/edit
   def edit
-    @notification = Notification.find(params[:id])
   end
 
-  # POST /notifications
-  # POST /notifications.json
   def create
-    @notification = Notification.new(params[:notification])
+    @notification = current_user.notifications.new(params[:notification])
 
     respond_to do |format|
       if @notification.save
@@ -53,11 +46,7 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # PUT /notifications/1
-  # PUT /notifications/1.json
   def update
-    @notification = Notification.find(params[:id])
-
     respond_to do |format|
       if @notification.update_attributes(params[:notification])
         format.html { redirect_to @notification, :notice => 'Notification was successfully updated.' }
@@ -69,15 +58,18 @@ class NotificationsController < ApplicationController
     end
   end
 
-  # DELETE /notifications/1
-  # DELETE /notifications/1.json
   def destroy
-    @notification = Notification.find(params[:id])
     @notification.destroy
 
     respond_to do |format|
       format.html { redirect_to notifications_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def get_object
+    @notification = @notification = current_user.notifications.find(params[:id])
   end
 end

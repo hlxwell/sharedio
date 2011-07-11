@@ -46,4 +46,16 @@ namespace :deploy do
   end
 end
 
+desc "This will disable the application and show a warning screen"
+task :disable_web do
+  puts "=============================="
+  # run "cp #{current_path}/config/maintenance.html #{current_path}/maintenance.html"
+end
+
+desc "This will enable the application and remove the warning screen"
+task :enable_web do
+  puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  # run "rm #{current_path}/maintenance.html"
+end
+
 before "deploy:symlink", "deploy:init_project"
