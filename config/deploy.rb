@@ -29,7 +29,7 @@ namespace :deploy do
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} kill `cat #{unicorn_pid}`" if File.exist?(unicorn_pid)
+    run "#{try_sudo} kill -INT `cat #{unicorn_pid}`" if File.exist?(unicorn_pid)
   end
 
   task :graceful_stop, :roles => :app, :except => { :no_release => true } do
@@ -41,8 +41,7 @@ namespace :deploy do
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
-    stop
-    start
+    reload
   end
 end
 

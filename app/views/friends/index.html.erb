@@ -3,9 +3,10 @@
 
 <p>
   <% @friends.each do |friend| %>
+    <p>
     <%= friend.name %>
     <%= friend.email %>
-    <%= friend.registered_user %>
-    <%= friend.group.try(:name) %>
+    <%= friend.trust %>
+    </p>
   <% end %>
 </p>
