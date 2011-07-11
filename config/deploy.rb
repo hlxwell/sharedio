@@ -49,13 +49,13 @@ end
 desc "This will disable the application and show a warning screen"
 task :disable_web do
   puts "=== Disabling the web ==========================="
-  run "cp #{current_path}/config/maintenance.html #{current_path}/maintenance.html"
+  # run "cp #{current_path}/config/maintenance.html #{current_path}/maintenance.html"
 end
 
 desc "This will enable the application and remove the warning screen"
 task :enable_web do
   puts "~~~ Enabling the web ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  run "rm #{current_path}/maintenance.html"
+  # run "rm #{current_path}/maintenance.html"
 end
 
 before "deploy", "disable_web"
