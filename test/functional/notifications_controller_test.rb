@@ -2,7 +2,21 @@ require 'test_helper'
 
 class NotificationsControllerTest < ActionController::TestCase
   setup do
-    @notification = notifications(:one)
+    @user = Factory(:user)
+    @sharing = Factory(:sharing, :user => @user)
+    @notification = @user.notifications.create! :sharing => @sharing
+    sign_in @user
+  end
+
+  test "should get unviewed" do
+    get :unviewed
+    assert_response :success
+    assert_equal 1, assigns(:notifications).count
+
+    get :show, {:id => @notification.id}
+
+    get :unviewed
+    assert_equal 0, assigns(:notifications).count
   end
 
   test "should get index" do

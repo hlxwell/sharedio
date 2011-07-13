@@ -1,12 +1,11 @@
 SharedIo::Application.routes.draw do
-  resources :notifications
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   devise_for :users
 
   resources :friends
+
   resources :groups do
     resources :friends
   end
@@ -14,6 +13,12 @@ SharedIo::Application.routes.draw do
   resources :sharings do
     resources :sharing_files, :path => "files"
     resources :sharing_users
+  end
+
+  resources :notifications do
+    collection do
+      get :unviewed
+    end
   end
 
   # Sample of regular route:

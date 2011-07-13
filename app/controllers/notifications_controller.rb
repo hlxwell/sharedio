@@ -11,6 +11,15 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def unviewed
+    @notifications = current_user.notifications.unviewed
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :json => @notifications }
+    end
+  end
+
   def show
     @notification.view!
 
