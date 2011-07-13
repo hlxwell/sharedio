@@ -32,7 +32,7 @@ class SharingUsersController < ApplicationController
 
     respond_to do |format|
       if @sharing_user.save
-        format.html { redirect_to @sharing_user, :notice => 'sharing_user was successfully created.' }
+        format.html { redirect_to [@sharing, @sharing_user], :notice => 'sharing_user was successfully created.' }
         format.json { render :json => @sharing_user, :status => :created }
       else
         format.html { render :action => "new" }
@@ -47,7 +47,7 @@ class SharingUsersController < ApplicationController
   def update
     respond_to do |format|
       if @sharing_user.update_attributes(params[:sharing_user])
-        format.html { redirect_to @sharing_user, :notice => 'sharing_user was successfully updated.' }
+        format.html { redirect_to [@sharing, @sharing_user], :notice => 'sharing_user was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -60,7 +60,7 @@ class SharingUsersController < ApplicationController
     @sharing_user.destroy
 
     respond_to do |format|
-      format.html { redirect_to sharing_users_url }
+      format.html { redirect_to sharing_sharing_users_url(@sharing) }
       format.json { head :ok }
     end
   end

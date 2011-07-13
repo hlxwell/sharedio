@@ -1,0 +1,25 @@
+<%= form_for([@sharing, @sharing_user]) do |f| %>
+  <% if @sharing_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sharing_user.errors.count, "error") %> prohibited this sharing_user from being saved:</h2>
+
+      <ul>
+      <% @sharing_user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :friend_id %><br />
+    <%= f.number_field :friend_id %>
+  </div>
+  <div class="field">
+    <%= f.label :downloaded %><br />
+    <%= f.check_box :downloaded %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Friend:</b>
+  <%= @sharing_user.friend_id %>
+</p>
+
+<p>
+  <b>Downloaded:</b>
+  <%= @sharing_user.downloaded %>
+</p>
+
+
+<%= link_to 'Edit', edit_sharing_sharing_user_path(@sharing, @sharing_user) %> |
+<%= link_to 'Back', sharing_sharing_users_path(@sharing) %>

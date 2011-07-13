@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Folder:</b>
+  <%= @sharing_file.folder %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @sharing_file.file %>
+</p>
+
+<p>
+  <b>Downloads count:</b>
+  <%= @sharing_file.downloads_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_sharing_sharing_file_path(@sharing, @sharing_file) %> |
+<%= link_to 'Back', sharing_sharing_files_path(@sharing) %>

@@ -1,4 +1,5 @@
-<%= form_for @group, :url => groups_path do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<h1>New group</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', groups_path %>

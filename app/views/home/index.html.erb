@@ -6,6 +6,9 @@
   Welcome <%= current_user.email %>
   <%= link_to "Sign out", destroy_user_session_path %>
   <p><%= link_to "All Sharings", sharings_path %></p>
+  <p><%= link_to "All Friends", friends_path %></p>
+  <p><%= link_to "All Groups", groups_path %></p>
+  <p><%= link_to "All Notifications", notifications_path %></p>
 <% else %>
   <%= link_to "Sign in", new_user_session_path %>
   <%= link_to "Sign up", new_user_registration_path %>

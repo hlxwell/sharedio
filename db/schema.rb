@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20110709094904) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.boolean  "trust"
+    t.boolean  "trust",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

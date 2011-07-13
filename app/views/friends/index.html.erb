@@ -1,12 +1,27 @@
-<h1>Friends#index</h1>
-<%= link_to "new", new_friend_path %>
+<h1>Listing friends</h1>
 
-<p>
-  <% @friends.each do |friend| %>
-    <p>
-    <%= friend.name %>
-    <%= friend.email %>
-    <%= friend.trust %>
-    </p>
-  <% end %>
-</p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Trust</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @friends.each do |friend| %>
+  <tr>
+    <td><%= friend.name %></td>
+    <td><%= friend.email %></td>
+    <td><%= friend.trust %></td>
+    <td><%= link_to 'Show', friend %></td>
+    <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
+    <td><%= link_to 'Destroy', friend, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Friend', new_friend_path %>

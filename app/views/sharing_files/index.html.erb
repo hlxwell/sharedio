@@ -1,11 +1,27 @@
-<h1>SharingFiles of "<%= @sharing.invitation_text %>"</h1>
-<%= link_to "new", new_sharing_sharing_file_path(params[:sharing_id]) %>
+<h1>Listing sharing_files</h1>
 
-<p>
-  <% @sharing_files.each do |sharing_file| %>
-    <p>
-      <%= sharing_file.file_url %> - <%= sharing_file.folder %>
-    </p>
-    <br>
-  <% end %>
-</p>
+<table>
+  <tr>
+    <th>Folder</th>
+    <th>File</th>
+    <th>Downloads count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sharing_files.each do |sharing_file| %>
+  <tr>
+    <td><%= sharing_file.folder %></td>
+    <td><%= sharing_file.file %></td>
+    <td><%= sharing_file.downloads_count %></td>
+    <td><%= link_to 'Show', [@sharing, sharing_file] %></td>
+    <td><%= link_to 'Edit', edit_sharing_sharing_file_path(@sharing, sharing_file) %></td>
+    <td><%= link_to 'Destroy', [@sharing, sharing_file], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sharing file', new_sharing_sharing_file_path(@sharing) %>

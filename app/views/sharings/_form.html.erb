@@ -1,0 +1,29 @@
+<%= form_for(@sharing) do |f| %>
+  <% if @sharing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sharing.errors.count, "error") %> prohibited this sharing from being saved:</h2>
+
+      <ul>
+      <% @sharing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :invitation_text %><br />
+    <%= f.text_field :invitation_text %>
+  </div>
+  <div class="field">
+    <%= f.label :total_file_count %><br />
+    <%= f.number_field :total_file_count %>
+  </div>
+  <div class="field">
+    <%= f.label :uploaded_file_count %><br />
+    <%= f.number_field :uploaded_file_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

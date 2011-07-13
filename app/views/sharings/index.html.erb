@@ -1,11 +1,31 @@
-<h1>Sharings#index</h1>
+<h1>Listing sharings</h1>
+
+<table>
+  <tr>
+    <th>Invitation text</th>
+    <th>Total file count</th>
+    <th>Uploaded file count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
 <% @sharings.each do |sharing| %>
-  <p>
-    <%= link_to sharing.invitation_text, sharing_sharing_files_path(sharing) %>
-    <div>
-      total files: <%= sharing.total_file_count %>,
-      uploaded files: <%= sharing.uploaded_file_count %>
-    </div>
-  </p>
+  <tr>
+    <td><%= sharing.invitation_text %></td>
+    <td><%= sharing.total_file_count %></td>
+    <td><%= sharing.uploaded_file_count %></td>
+    <td><%= link_to 'Show', sharing %></td>
+    <td><%= link_to 'Edit', edit_sharing_path(sharing) %></td>
+    <td><%= link_to 'Destroy', sharing, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Files', sharing_sharing_files_path(sharing) %></td>
+    <td><%= link_to 'Users', sharing_sharing_users_path(sharing) %></td>
+  </tr>
 <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sharing', new_sharing_path %>

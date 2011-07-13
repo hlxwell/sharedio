@@ -1,6 +1,5 @@
-<%= form_for @friend, :url => friends_path do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :email %>
-  <%= f.check_box :trust %>
-  <%= f.submit %>
-<% end %>
+<h1>New friend</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', friends_path %>

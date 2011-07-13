@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Invitation text:</b>
+  <%= @sharing.invitation_text %>
+</p>
+
+<p>
+  <b>Total file count:</b>
+  <%= @sharing.total_file_count %>
+</p>
+
+<p>
+  <b>Uploaded file count:</b>
+  <%= @sharing.uploaded_file_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_sharing_path(@sharing) %> |
+<%= link_to 'Back', sharings_path %>
