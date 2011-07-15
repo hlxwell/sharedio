@@ -13,6 +13,7 @@ class NotificationsController < ApplicationController
 
   def unviewed
     @notifications = current_user.notifications.unviewed
+    @notifications.each(&:view!)
 
     respond_to do |format|
       format.html { render :index }
