@@ -1,0 +1,7 @@
+Hi <%= @friend.name %>
+
+You friend <%= @user.email %> shared with you some files:
+
+<% @files.each do |f| %>
+  http://shared.io<%= f.file.url %>
+<% end %>

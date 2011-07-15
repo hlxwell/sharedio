@@ -36,13 +36,8 @@ class SharingsController < ApplicationController
         format.html { redirect_to @sharing, :notice => 'sharing was successfully created.' }
         format.json { render :json => @sharing, :status => :created, :location => @sharing }
       else
-        format.html { 
-                    pp  @sharing.errors
-                    
-                    render :action => "new" }
-        format.json { 
-
-          render :json => @sharing.errors, :status => :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @sharing.errors, :status => :unprocessable_entity }
       end
     end
   end

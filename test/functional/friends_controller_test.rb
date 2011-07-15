@@ -20,7 +20,7 @@ class FriendsControllerTest < ActionController::TestCase
       post :destroy, :id => friend.id, :format => :json
       assert_response :ok
     end
-    
+
     should "be able to update" do
       friend = Factory(:friend, :user => @user)
       delete :update, :friend => friend.attributes, :id => friend.id, :format => :json
