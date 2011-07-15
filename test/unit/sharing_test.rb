@@ -22,4 +22,9 @@ class SharingTest < ActiveSupport::TestCase
     assert_equal 1, @notified_user.notifications.count
     assert !ActionMailer::Base.deliveries.empty?
   end
+  
+  test "json" do
+    @sharing = Factory(:sharing, :user => @user)
+    assert @sharing.to_json.size > 0
+  end
 end

@@ -25,9 +25,9 @@ class Sharing < ActiveRecord::Base
     end
   end
 
-  def to_json
+  def to_json option = {}
     attrs = self.attributes
     attrs["sender"] = self.user.email
-    attrs.to_json
+    attrs.to_json option
   end
 end
