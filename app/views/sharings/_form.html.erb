@@ -23,6 +23,11 @@
     <%= f.label :uploaded_file_count %><br />
     <%= f.number_field :uploaded_file_count %>
   </div>
+  <div class="field">
+    <%= f.fields_for :sharing_users do |sharing_user_field| %>
+      <p>Friends Id: <%= sharing_user_field.text_field :friend_id %></p>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

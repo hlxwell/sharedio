@@ -28,7 +28,7 @@ class SharingUsersController < ApplicationController
   end
 
   def create
-    @sharing_user = @sharing.sharing_users.build params[:sharing_user]
+    @sharing_user = @sharing.sharing_users.new params[:sharing_user]
 
     respond_to do |format|
       if @sharing_user.save

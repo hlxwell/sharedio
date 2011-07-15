@@ -28,7 +28,7 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @friend = current_user.friends.build params[:friend]
+    @friend = current_user.friends.new params[:friend]
 
     respond_to do |format|
       if @friend.save

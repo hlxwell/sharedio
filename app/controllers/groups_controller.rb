@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = current_user.groups.build params[:group]
+    @group = current_user.groups.new params[:group]
 
     respond_to do |format|
       if @group.save

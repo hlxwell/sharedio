@@ -28,7 +28,7 @@ class SharingFilesController < ApplicationController
   end
 
   def create
-    @sharing_file = @sharing.sharing_files.build params[:sharing_file]
+    @sharing_file = @sharing.sharing_files.new params[:sharing_file]
 
     respond_to do |format|
       if @sharing_file.save

@@ -29,15 +29,17 @@ class SharingsController < ApplicationController
   end
 
   def create
-    @sharing = current_user.sharings.build params[:sharing]
+    @sharing = current_user.sharings.new params[:sharing]
 
-    respond_to do |format|
+    # debugger
+
+    respond_to do |format|    
       if @sharing.save
-        format.html { redirect_to @sharing, :notice => 'sharing was successfully created.' }
-        format.json { render :json => @sharing, :status => :created, :location => @sharing }
+          format.html { redirect_to @sharing, :notice => 'sharing was successfully created.' }
+          format.json { render :json => @sharing, :status => :created, :location => @sharing }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @sharing.errors, :status => :unprocessable_entity }
+          format.html { render :action => "new" }
+          format.json { render :json => @sharing.errors, :status => :unprocessable_entity }
       end
     end
   end
