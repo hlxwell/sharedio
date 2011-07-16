@@ -27,11 +27,11 @@ namespace :deploy do
   end
 
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path}; #{unicorn_bin} -c #{unicorn_config} -E production -D"
+    run "cd #{current_path}; bundle exec unicorn -c #{unicorn_config} -E production -D"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "if [ -f #{unicorn_pid} ]; then #{try_sudo} kill -INT `cat #{unicorn_pid}`; fi"
+    run "if [ -f #{unicorn_pid} ]; then #{try_sudo} kill -9 `cat #{unicorn_pid}`; fi"
   end
 
   task :graceful_stop, :roles => :app, :except => { :no_release => true } do
