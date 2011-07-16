@@ -6,11 +6,11 @@ set :user, "sharedio"
 set :use_sudo, false
 
 # for unicorn
+set :bundle_bin, "/opt/ruby-enterprise-1.8.7-2010.02/bin/bundle"
 set :unicorn_bin, "/opt/ruby-enterprise-1.8.7-2010.02/bin/unicorn"
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
 set :unicorn_sock, "#{shared_path}/sockets/unicorn.sock"
-set :bundle_bin, "/opt/ruby-enterprise-1.8.7-2010.02/bin/bundle"
 
 role :web, "itjob.fm"                          # Your HTTP server, Apache/etc
 role :app, "itjob.fm"                          # This may be the same as your `Web` server
@@ -28,7 +28,7 @@ namespace :deploy do
   end
 
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{release_path}; #{bundle_bin} exec unicorn -c #{unicorn_config} -E production -D"
+    run "cd #{current_path}; #{unicorn_bin} -c #{unicorn_config} -E production -D"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
