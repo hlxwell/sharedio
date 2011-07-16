@@ -6,7 +6,7 @@ class SharingFilesController < ApplicationController
     @sharing_files = @sharing.sharing_files.all
 
     respond_to do |format|
-      format.json { render :json => @sharing_files }
+      format.json { render :json => @sharing_files.to_json(:methods => [:download_store_path, :url]) }
       format.html
     end
   end
@@ -14,7 +14,7 @@ class SharingFilesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render :json => @sharing_file }
+      format.json { render :json => @sharing_files.to_json(:methods => [:download_store_path, :url]) }
     end
   end
 
@@ -70,7 +70,7 @@ class SharingFilesController < ApplicationController
   def get_object
     @sharing_file = @sharing.sharing_files.find(params[:id])
   end
-  
+
   def find_sharing
     @sharing = current_user.sharings.find(params[:sharing_id])
   end

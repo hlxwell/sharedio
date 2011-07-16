@@ -11,6 +11,8 @@ class Sharing < ActiveRecord::Base
 
   after_save :notify_friends
 
+  delegate :email, :to => :user
+
   def notify_friends
     return if total_file_count != uploaded_file_count # uploaded all the files
 
@@ -23,11 +25,5 @@ class Sharing < ActiveRecord::Base
       # send email to notify
       UserMailer.new_sharing(self, u.friend).deliver
     end
-  end
-
-  def to_json option = {}
-    attrs = self.attributes
-    attrs["sender"] = self.user.email
-    attrs.to_json option
   end
 end

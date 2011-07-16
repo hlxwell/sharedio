@@ -6,7 +6,7 @@ class SharingsController < ApplicationController
     @sharings = current_user.sharings.all
 
     respond_to do |format|
-      format.json { render :json => @sharings }
+      format.json { render :json => @sharings.to_json(:methods => :email) }
       format.html
     end
   end
@@ -14,7 +14,7 @@ class SharingsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render :json => @sharing }
+      format.json { render :json => @sharing.to_json(:methods => :email) }
     end
   end
 
@@ -30,8 +30,6 @@ class SharingsController < ApplicationController
 
   def create
     @sharing = current_user.sharings.new params[:sharing]
-
-    # debugger
 
     respond_to do |format|    
       if @sharing.save
