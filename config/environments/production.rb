@@ -54,8 +54,8 @@ SharedIo::Application.configure do
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'shared.io' }
-  config.action_mailer.smtp_settings[:enable_starttls_auto] = false
 
+  # config.action_mailer.smtp_settings[:enable_starttls_auto] = false
   # config.action_mailer.smtp_settings = {
   #   :address => '...',
   #   :user_name => '...',
