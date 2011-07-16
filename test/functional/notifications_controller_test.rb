@@ -11,12 +11,12 @@ class NotificationsControllerTest < ActionController::TestCase
   test "should get unviewed" do
     get :unviewed
     assert_response :success
-    assert_equal 1, assigns(:notifications).count
+    assert_equal 1, assigns(:notifications).size
 
     get :show, {:id => @notification.id}
 
     get :unviewed
-    assert_equal 0, assigns(:notifications).count
+    assert_equal 0, assigns(:notifications).size
   end
 
   test "should get index" do
@@ -32,7 +32,7 @@ class NotificationsControllerTest < ActionController::TestCase
 
   test "should create notification" do
     assert_difference('Notification.count') do
-      post :create, :notification => @notification.attributes
+      post :create, :notification => { :user_id => @user, :sharing_id => @sharing }
     end
 
     assert_redirected_to notification_path(assigns(:notification))

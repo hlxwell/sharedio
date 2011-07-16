@@ -23,4 +23,9 @@ class SharingFileTest < ActiveSupport::TestCase
 
     assert_equal 1, @sharing.notifications.count
   end
+  
+  test "should include download_store_path" do
+    @sharing_file = Factory.build(:sharing_file, :sharing => @sharing)
+    assert @sharing_file.download_store_path.size > 10
+  end
 end
