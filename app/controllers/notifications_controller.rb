@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_filter :get_object, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.includes(:user, :sharing, :sharing_files)
 
     respond_to do |format|
       format.html # index.html.erb
