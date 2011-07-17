@@ -14,7 +14,8 @@ class Sharing < ActiveRecord::Base
   delegate :email, :to => :user
 
   def notify_friends
-    return if total_file_count != uploaded_file_count # uploaded all the files
+    return if uploaded_file_count == 0 or
+              total_file_count != uploaded_file_count # uploaded all the files
 
     self.sharing_users.each do |u|
       # if found the friend has the user account in system, send notification.
@@ -25,5 +26,12 @@ class Sharing < ActiveRecord::Base
       # send email to notify
       UserMailer.new_sharing(self, u.friend).deliver
     end
+  end
+
+  def as_json options = nil
+    self.attributes.merge!(
+      :email => self.email,
+      :sharing_files => self.sharing_files.includes(:user).map {|f| f.attributes.merge!(:url => f.url, :download_store_path => f.download_store_path) }
+    )
   end
 end

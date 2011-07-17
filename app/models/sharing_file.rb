@@ -16,4 +16,15 @@ class SharingFile < ActiveRecord::Base
   def download_store_path
     File.join("#{self.sharing.created_at.to_s(:db)} From #{self.user.email}", folder.to_s, file.file.filename)
   end
+
+  # def to_json options = {}
+  #   super options.merge!(methods => [:download_store_path, :url])
+  # end
+
+  def as_json options = nil
+    self.attributes.merge!(
+      :url => self.url,
+      :download_store_path => self.download_store_path
+    )
+  end
 end

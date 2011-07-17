@@ -3,10 +3,10 @@ class SharingsController < ApplicationController
   before_filter :get_object, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @sharings = current_user.sharings.all
+    @sharings = current_user.sharings.includes(:sharing_files, :user).all
 
     respond_to do |format|
-      format.json { render :json => @sharings.to_json(:methods => :email) }
+      format.json { render :json => @sharings }
       format.html
     end
   end
@@ -14,7 +14,7 @@ class SharingsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render :json => @sharing.to_json(:methods => :email) }
+      format.json { render :json => @sharing }
     end
   end
 
@@ -31,7 +31,7 @@ class SharingsController < ApplicationController
   def create
     @sharing = current_user.sharings.new params[:sharing]
 
-    respond_to do |format|    
+    respond_to do |format|
       if @sharing.save
           format.html { redirect_to @sharing, :notice => 'sharing was successfully created.' }
           format.json { render :json => @sharing, :status => :created, :location => @sharing }
@@ -69,6 +69,6 @@ class SharingsController < ApplicationController
   private
 
   def get_object
-    @sharing = current_user.sharings.find(params[:id])
+    @sharing = current_user.sharings.includes(:user, :sharing_files).find(params[:id])
   end
 end

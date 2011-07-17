@@ -21,9 +21,16 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def show
-    @notification.view!
+  def viewed
+    @notifications = current_user.notifications.viewed
 
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :json => @notifications }
+    end
+  end
+
+  def show
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @notification }
@@ -80,6 +87,6 @@ class NotificationsController < ApplicationController
   private
 
   def get_object
-    @notification = @notification = current_user.notifications.find(params[:id])
+    @notification = current_user.notifications.includes(:user).find(params[:id])
   end
 end

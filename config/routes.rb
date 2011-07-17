@@ -4,6 +4,12 @@ SharedIo::Application.routes.draw do
 
   devise_for :users
 
+  resources :users do
+    collection do
+      get :current
+    end
+  end
+
   resources :friends
 
   resources :groups do
@@ -18,6 +24,7 @@ SharedIo::Application.routes.draw do
   resources :notifications do
     collection do
       get :unviewed
+      get :viewed
     end
   end
 

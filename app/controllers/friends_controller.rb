@@ -68,7 +68,7 @@ class FriendsController < ApplicationController
   private
 
   def get_object
-    @friend = current_user.friends.find(params[:id])
+    @friend = current_user.friends.includes(:user).find(params[:id])
   end
 
 end
