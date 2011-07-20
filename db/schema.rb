@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20110623091437) do
   create_table "sharings", :force => true do |t|
     t.integer  "user_id"
     t.text     "invitation_text"
+    t.integer  "total_file_count",    :default => 0
+    t.integer  "uploaded_file_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

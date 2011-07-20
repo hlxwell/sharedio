@@ -33,7 +33,7 @@ class SharingFilesController < ApplicationController
     respond_to do |format|
       if @sharing_file.save
         format.html { redirect_to @sharing_file, :notice => 'sharing_file was successfully created.' }
-        format.json { render :json => @sharing_file, :status => :created, :location => @sharing_file }
+        format.json { render :json => @sharing_file, :status => :created }
       else
         format.html { render :action => "new" }
         format.json { render :json => @sharing_file.errors, :status => :unprocessable_entity }

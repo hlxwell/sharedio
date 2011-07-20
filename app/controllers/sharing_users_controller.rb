@@ -33,7 +33,7 @@ class SharingUsersController < ApplicationController
     respond_to do |format|
       if @sharing_user.save
         format.html { redirect_to @sharing_user, :notice => 'sharing_user was successfully created.' }
-        format.json { render :json => @sharing_user, :status => :created, :location => @sharing_user }
+        format.json { render :json => @sharing_user, :status => :created }
       else
         format.html { render :action => "new" }
         format.json { render :json => @sharing_user.errors, :status => :unprocessable_entity }
